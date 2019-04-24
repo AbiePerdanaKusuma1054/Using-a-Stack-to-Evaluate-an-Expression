@@ -109,14 +109,14 @@ int main(){
     		if(isdigit(postfix[n])){
 				S.pushtostack(postfix[n]);
 			}
-	  		else{
+	  	else{
 		 		A=S.popfromstack()-'0';
 		 		B=S.popfromstack()-'0';
 				if(postfix[n]=='*'){
 					C=B*A;
 					S.pushtostack(C+'0');
 		  		}
-      			else if(postfix[n]=='/'){
+      				else if(postfix[n]=='/'){
 			 		C=B/A;
 		 			S.pushtostack(C+'0');
 		  		}
