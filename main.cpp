@@ -40,3 +40,32 @@ class stack{
 				return ch;
 			}
 		}
+		char top(){
+			return head->element;
+		}	
+    	void cetak(){
+			if(isEmpty()){
+				cout<<"Stack Kosong!";
+			}
+      		else{
+				node *bantu=head;
+				while(bantu!=NULL){
+					cout<<bantu->element<<endl;
+					bantu=bantu->next;
+				}
+			}
+		}    
+};
+
+int cek(char cekoprtr){	
+	if(cekoprtr=='*'||cekoprtr=='/')
+		return 2;
+	else
+		return 1;
+}
+
+int main(){
+	stack S;
+	int i=0,n=0,A,B,C;
+	char postfix[20];
+	char infix[20];
