@@ -27,7 +27,7 @@ class stack{
 				head=baru;
 			}
 		}
-    	char popfromstack(){
+    		char popfromstack(){
 			if(isEmpty()){
 				cout<<"Stack kosong!"<<endl;
 			return 0;
@@ -43,7 +43,7 @@ class stack{
 		char top(){
 			return head->element;
 		}	
-    	void cetak(){
+    		void cetak(){
 			if(isEmpty()){
 				cout<<"Stack Kosong!";
 			}
@@ -69,3 +69,38 @@ int main(){
 	int i=0,n=0,A,B,C;
 	char postfix[20];
 	char infix[20];
+	
+	cin>>infix;
+	while(infix[i]!='\0'){
+		if(isdigit(infix[i])){
+			postfix[n]=infix[i];
+			n++;
+		}
+		else if(infix[i]=='('){
+			S.pushtostack(infix[i]);
+		}
+		else if(infix[i]==')'){
+			while(!S.isEmpty() && S.top()!='('){
+				postfix[n]=S.popfromstack();
+				n++;
+			}
+			S.popfromstack();
+		}
+		else{
+			if(S.isEmpty() || S.top()=='('){
+				S.pushtostack(infix[i]);
+			}
+			else{
+				while(!S.isEmpty() && S.top()!='(' && cek(infix[i])<=cek(S.top())){
+					postfix[n]=S.popfromstack();
+					n++;
+				}
+				S.pushtostack(infix[i]);
+			}
+		}
+		i++;
+	}
+	while(!S.isEmpty()){
+		postfix[n]=S.popfromstack();
+		n++;
+	}
